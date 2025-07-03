@@ -2,19 +2,25 @@
 import React, { useEffect, useState } from "react";
 import Header from "../common/Header";
 import useCounterStore from "@/store/useCounterStore";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "@/firebase"; // Make sure you have an auth export from your firebase config
 
 
 const Homepages = () => {
     const name = "Kumanan";
     const age = "26";
-    
+const [user, setUser] = useState(null);
+
+useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+        setUser(user);
+    });
+    return () => unsubscribe();
+}, []);
+
+console.log(user);
 
 const { count, increase } = useCounterStore();
-
-    useEffect(() => {
-        console.log("Render!")
-    }, [])
-
     return (
         <div className="m-4">
             
@@ -30,6 +36,9 @@ const { count, increase } = useCounterStore();
                 >
                     +
                 </button>
+                {user && (
+                    <h2>Welcome my project, {user.displayName}</h2>
+                )}
             </div>
         </div>
     );
