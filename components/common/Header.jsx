@@ -8,8 +8,10 @@ import { useState } from 'react';
 
 
 
+
+
 const Header = ({ }) => {
-        const [isLoggedIn, setIsLoggedIn] = useState(false);
+        const [isLoggedIn, setIsLoggedIn] = useState(true);
         const { count, decrease } = useCounterStore();
         
         const navItem = [

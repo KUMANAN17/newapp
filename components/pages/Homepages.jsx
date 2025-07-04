@@ -4,6 +4,7 @@ import Header from "../common/Header";
 import useCounterStore from "@/store/useCounterStore";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/firebase"; // Make sure you have an auth export from your firebase config
+import { signInWithPopup } from "firebase/auth";
 
 
 const Homepages = () => {
