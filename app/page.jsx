@@ -1,14 +1,12 @@
 
 
 
-import Homepages from '../components/pages/Homepages';
+import Book from '../components/bookreview/book';
 
 export default function Home(){
   return(
     <div>
-      
-
-      <Homepages/>
+     <Book />
     </div>
   );
 }
